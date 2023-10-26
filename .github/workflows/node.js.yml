@@ -24,7 +24,7 @@ jobs:
           # Par exemple, vous pouvez utiliser l'interface de ligne de commande MongoDB (mongosh) ou un script Node.js
   
           # Exemple avec mongosh
-          # mongosh "$MONGODB8ATLAS8ARI" --eval "printjson(db.adminCommand('listDatabases'))"
+          mongosh "$MONGODB8ATLAS8ARI" --eval "printjson(db.adminCommand('listDatabases'))"
         env: 
           MONGODB_ATLAS_URI: ${{secrets.MONGODB_ATLAS_URI }}
   build:
