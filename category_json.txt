@@ -1,5 +1,0 @@
-{ 
-title: "animaux",
-slug: "animaux,
-image: ""
-}
