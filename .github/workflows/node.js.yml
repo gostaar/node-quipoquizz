@@ -23,11 +23,11 @@ jobs:
         run: |
           # Récupérez la chaîne de connexion MongoDB Atlas depuis les secrets
           MONGODB_ATLAS_URI=$MONGODB_ATLAS_URI
-
+      
           # Votre logique de connexion à MongoDB Atlas ici
-          # Utilisez l'interface de ligne de commande MongoDB "mongosh"
+          # Utilisez l'interface de ligne de commande MongoDB "mongo"
           
-          # Exemple avec mongosh
-          mongosh "$MONGODB_ATLAS_URI" --eval "printjson(db.adminCommand('listDatabases'))"
+          # Exemple avec mongo
+          mongo "$MONGODB_ATLAS_URI" --eval "printjson(db.adminCommand('listDatabases'))"
         env:
           MONGODB_ATLAS_URI: ${{ secrets.MONGODB_ATLAS_URI }}
