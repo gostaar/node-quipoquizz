@@ -20,20 +20,25 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
+      - name: Check IP Address
+        run: echo "IP Address: $(curl -s https://api64.ipify.org)"
+        
+      - name: Install Dependencies and Run Application
+        run: |
+          rm -rf node_modules package-lock.json
+          npm cache clean -f
+          npm install -g npm@latest
+          npm install express 
+          npm install mongoose
+          npm install cors --force
+          npm ci
+          npm run build --if-present
+          npm start
+
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: rm -rf node_modules package-lock.json
-    - run: npm install
-    - run: npm install -g npm@latest
-    - run: npm cache clean -f
-    - run: npm install express 
-    - run: npm install mongoose
-    
-    - run: npm install cors --force
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm start
+
