@@ -11,4 +11,4 @@ jobs:
 
     steps:
       - name: Vérifier l'adresse IP
-        run: echo "curl ifconfig.me"
+        run: curl ifconfig.me
