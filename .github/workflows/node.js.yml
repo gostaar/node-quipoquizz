@@ -11,4 +11,4 @@ jobs:
 
     steps:
       - name: Vérifier l'adresse IP
-        run: echo "IP Address: $(curl -s https://api64.ipify.org)"
+        run: echo "curl ifconfig.me"
