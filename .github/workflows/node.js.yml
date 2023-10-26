@@ -26,9 +26,12 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: rm -rf node_modules package-lock.json && npm install
-    - run: npm install -g npm@latest && npm cache clean -f
-    - run: npm install express && npm install mongoose
+    - run: rm -rf node_modules package-lock.json
+    - run: npm install
+    - run: npm install -g npm@latest
+    - run: npm cache clean -f
+    - run: npm install express 
+    - run: npm install mongoose
     
     - run: npm install cors --force
     - run: npm ci
