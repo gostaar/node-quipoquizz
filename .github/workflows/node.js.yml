@@ -10,13 +10,29 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  connect-mongodb-atlas:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
+      - name: Set up MongoDB Atlas connextion
+        run: |
+          # Récupérez la chaine de connexion MongoDB Atlas depuis les secrets MONGODB_ATLAS_URI=$MONGODB_ATLAS_URI
+
+          # Votre logique de connexion à MongoDB Atlas ici
+          # Par exemple, vous pouvez utiliser l'interface de ligne de commande MongoDB (mongosh) ou un script Node.js
+  
+          # Exemple avec mongosh
+          # mongosh "$MONGODB8ATLAS8ARI" --eval "printjson(db.adminCommand('listDatabases'))"
+        env: 
+          MONGODB_ATLAS_URI: ${{secrets.MONGODB_ATLAS_URI }}
+  build:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
