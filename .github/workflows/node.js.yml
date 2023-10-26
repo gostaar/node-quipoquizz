@@ -18,15 +18,16 @@ jobs:
 
       - name: Set up MongoDB Atlas connextion
         run: |
-          # Récupérez la chaine de connexion MongoDB Atlas depuis les secrets MONGODB_ATLAS_URI=$MONGODB_ATLAS_URI
+          # Récupérez la chaîne de connexion MongoDB Atlas depuis les secrets
+          MONGODB_ATLAS_URI=$MONGODB_ATLAS_URI
 
           # Votre logique de connexion à MongoDB Atlas ici
-          # Par exemple, vous pouvez utiliser l'interface de ligne de commande MongoDB (mongosh) ou un script Node.js
-  
-          # Exemple avec mongosh
-          mongosh "$MONGODB_ATLAS_URI" --eval "printjson(db.adminCommand('listDatabases'))"
-        env: 
-          MONGODB_ATLAS_URI: ${{secrets.MONGODB_ATLAS_URI }}
+          # Utilisez l'interface de ligne de commande MongoDB "mongo" au lieu de "mongosh"
+          
+          # Exemple avec mongo
+          mongo "$MONGODB_ATLAS_URI" --eval "printjson(db.adminCommand('listDatabases'))"
+        env:
+          MONGODB_ATLAS_URI: ${{ secrets.MONGODB_ATLAS_URI }}
   build:
     runs-on: ubuntu-latest
 
